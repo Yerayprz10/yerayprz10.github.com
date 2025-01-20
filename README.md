@@ -1,0 +1,1 @@
+En este proyecto de excel he realiazado un limpieza de datos a partir de una hoja de excel sobre ventas de bicicletas y luego he creado unas tablas visuales para entender mejor los datos y puestas en conjunto en una Dashboard
