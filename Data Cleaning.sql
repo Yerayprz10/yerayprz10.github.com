@@ -149,7 +149,7 @@ ALTER TABLE layoffs_staging2
 DROP column row_num;
 
 
--- Exploratory data anlysis
+-- Exploracion de datos.
 
 
 SELECT*
@@ -228,16 +228,16 @@ ORDER BY 3 desc;
 
 -- Top 5 compañias con el mayor numero de despidos por año.
 WITH company_year (company, years, total_laid_off) AS
-( -- CTE company total laid off by year --
+( -- CTE Total de despidos por año --
 SELECT company, YEAR(`date`), sum(total_laid_off)
 FROM layoffs_staging2
 GROUP BY company, YEAR(`date`)
 ), Company_year_rank AS
-( -- CTE ranking company total laid off by year --
+( -- CTE ranking  --
 SELECT*, DENSE_RANK() OVER(PARTITION BY years ORDER BY total_laid_off DESC) AS ranking
 FROM company_year
 WHERE years is not null
-) -- TOP 5 company laid off by year --
+) 
 SELECT*
 FROM Company_year_rank
 WHERE ranking <= 5;
